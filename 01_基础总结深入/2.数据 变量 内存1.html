@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>数据 变量 内存</title>
+    </head>
+    <body>
+        <script>
+            // 引用变量赋值的问题
+            // 1、 2个引用变量指向同一个对象，通过一个引用变量修改对象内容，另一个引用变量也会变，因为他们指向同一个对象
+            var obj1 = {};
+            var obj2 = obj1;
+            obj2.name = "Tom";
+            console.log(obj1.name); // "Tom"
+            function f1(obj) {
+                obj.age = 12;
+            }
+            f1(obj2);
+            console.log(obj1.age); // 12
+
+            // 2、 2个引用对象指向同一个对象，让一个引用变量指向另一个对象，另一个引用变量仍然指向之前的对象，所以他们指向不同的对象
+            var obj3 = { name: "Tom" };
+            var obj4 = obj3;
+            obj3 = { name: "Jack" };
+            console.log(obj4.name); // "Tom"
+            function f2(obj) {
+                obj = { name: "Bob" };
+            }
+            f2(obj3);
+            console.log(obj3.name); // "Jack"
+            console.log(obj4.name); // "Tom"
+        </script>
+    </body>
+</html>

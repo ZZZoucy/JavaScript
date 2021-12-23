@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>数据类型</title>
+    </head>
+    <body>
+        <script>
+            // 声明了变量，但是未赋值，则为 undefined
+            // undefined 和 'undefined' 不是同一个东西
+            // typeof 返回的是一个字符串类型的值
+            var a;
+            console.log(a); // undefined
+            console.log(typeof a); // "undefined"
+            console.log(undefined === "undefined"); // false
+            console.log(typeof a === undefined); // false
+            console.log(typeof a === "undefined"); // true
+
+            var b = 3;
+            console.log(typeof b); // "number"
+            console.log(typeof b === "number"); // true
+
+            var c = "hello";
+            console.log(typeof c); // "string"
+            console.log(typeof c === "string"); // true
+
+            var d = true;
+            console.log(typeof d); // "boolean"
+            console.log(typeof d === "boolean"); // true
+
+            var e = null;
+            console.log(typeof e); // "object"
+            console.log(typeof e === "object"); // true
+
+            console.log("--------------------------------");
+
+            var obj = {
+                b1: [1, 2, console.log],
+                b2: function () {
+                    console.log("b2()");
+                },
+            };
+
+            console.log(obj instanceof Object, typeof obj); // true 'object'
+            console.log(obj.b1 instanceof Object); // true
+            console.log(obj.b1 instanceof Array, typeof obj); // true 'object'
+            console.log(obj.b1[2] instanceof Function, typeof obj.b1[2]); // true 'function'  // obj.b1[2] 是数组中的 console.log
+            console.log(obj.b2 instanceof Object); // true
+            console.log(obj.b2 instanceof Function); // true
+
+            console.log(obj.b1[2]("hello")); // "hello"
+        </script>
+    </body>
+</html>

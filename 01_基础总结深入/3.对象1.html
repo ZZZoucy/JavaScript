@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>对象</title>
+    </head>
+    <body>
+        <!-- 
+            对象：有属性和方法
+                 方法是一种特殊的属性
+                 属性：由 属性名(字符串)和属性值(任意类型) 组成
+                 方法：由 属性名(字符串)和属性值(函数) 组成
+        -->
+        <script>
+            // 如何访问对象内部数据
+            // 1、 .属性名     —— 写法简单，但有时用不了
+            // 2、 ['属性名']  —— 写法简单，任何时候都可以用，什么时候用？
+            var p = {
+                name: "Tom",
+                age: 18,
+                setName: function (name) {
+                    this.name = name;
+                },
+                setAge: function (age) {
+                    this.age = age;
+                },
+            };
+            console.log(p.name, p["age"]); // Tom 18
+            console.log(p.setName); //ƒ (name) {this.name = name;}
+
+            p.setName("Jack");
+            console.log(p.name); // Jack
+
+            p["setAge"](23);
+            console.log(p["age"]); // 23
+        </script>
+    </body>
+</html>

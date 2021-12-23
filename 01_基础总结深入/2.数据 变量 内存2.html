@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>数据 变量 内存</title>
+    </head>
+    <body>
+        <script>
+            // 数据传递的问题（值传递还是引用传递？）两种理解：
+            // 1、只有值传递(那么值可以是 基本数据/地址值)
+            // 2、第二种看作是引用传递，那么需要知道它引用的是 地址值对应的对象
+            var a = 3;
+            function fn(a) {
+                a = a + 1; // 所以这里操作 a
+                console.log(a); // 4
+            }
+            // 传递的是 a 的值 ---> 值传递
+            fn(a); // 是将 a 的值 3 传入，进行操作，而不是将 变量a 传入
+            console.log(a); //3，所以这里的 a 仍然是全局变量 a，跟函数内部的没有关系
+
+            function fn(bj) {
+                obj = { name: "Bob" };
+            }
+            // 传递的是 obj 的值 ---> 只不过 obj 的值是地址值，是存 {name:'Tpm'} 的地址
+            fn(obj); // 是将 { name: "Tom" } 传入
+            var obj = { name: "Tom" };
+            console.log(obj.name); // Tom
+        </script>
+    </body>
+</html>

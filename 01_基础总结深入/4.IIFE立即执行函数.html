@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IIFE</title>
+    </head>
+    <body>
+        <script>
+            // 立即执行函数（匿名函数自调用）
+            // 作用：隐藏内部实现、不污染全局命名空间
+
+            (function (i) {
+                var a = 4;
+                // 内部实现
+                function fn() {
+                    console.log("fn", i + a);
+                }
+                fn();
+            })(3); // fn 7
+
+            // 不污染全局命名空间
+            var a = 0;
+            console.log(a); // 0
+        </script>
+    </body>
+</html>

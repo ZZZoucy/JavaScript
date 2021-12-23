@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>原型链</title>
+    </head>
+    <body>
+        <!-- 
+        1. 原型链（隐式原型链，因为是沿着 __proto__ 找的）
+            * 访问一个对象的属性时，
+                * 先在自身属性中查找，找到返回
+                * 如果自身没有，再沿着 __proto__ 这条链往上查找，找到返回
+                * 如果原型链上也没有，返回 undefined
+    -->
+        <script>
+            // 创建构造函数，内置 test1 方法
+            function Fn() {
+                this.test1 = function () {
+                    console.log("test1()");
+                };
+            }
+            // 在构造函数原型链上添加 test2 方法
+            Fn.prototype.test2 = function () {
+                console.log("test2()");
+            };
+            // 创建实例对象 fn :  fn.__proto__ === Fn.prototype
+            var fn = new Fn();
+            // fn 实例对象自身没有 test1、test2、toString 方法，去原型链上找，于是找到
+            fn.test1(); // test1()
+            fn.test2(); // test2()
+            console.log(fn.toString()); // [object Object]
+            // fn 实例对象自身没有 test3 方法，去原型链上找，也没找到，于是报错
+            fn.test3(); // fn.test3 is not a function
+        </script>
+    </body>
+</html>

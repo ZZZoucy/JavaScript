@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>什么时候用['属性名']</title>
+    </head>
+    <body>
+        <!-- 
+            什么时候用['属性名']
+            1. 属性名包含特殊符号的时候，比如 - 空格
+            2. 属性名不确定的时候
+        -->
+        <script>
+            var p = {};
+
+            // 1. 属性名包含特殊符号的时候，比如 - 空格
+            // 需求: 添加一个属性: content-type: text/json
+            // p.content-type = 'text/json' //不正确
+            p["content-type"] = "text/json";
+            console.log(p["content-type"]); // text/json
+
+            // 2. 属性名不确定的时候
+            var prop = "xxx";
+            var value = 123;
+            // p.prop value // 不正确
+            p[prop] = value;
+            console.log(p[prop]); // 123
+        </script>
+    </body>
+</html>
