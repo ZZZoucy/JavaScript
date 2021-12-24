@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>07_面试题1</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                说说它们的输出情况
+            */
+
+            //代码片段一
+            var name = "The Window";
+            var object = {
+                name: "My Object",
+                getNameFunc: function () {
+                    return function () {
+                        return this.name;
+                    };
+                },
+            };
+            // object.getNameFunc() 得到 方法内部的 匿名函数
+            // 而 匿名函数() 就是直接调用函数了，那么 this 是指向 window 的
+            console.log(object.getNameFunc()()); // The window
+
+            //代码片段二
+            var name2 = "The Window";
+            var object2 = {
+                name2: "My Object",
+                getNameFunc: function () {
+                    var that = this;
+                    return function () {
+                        return that.name2;
+                    };
+                },
+            };
+            // object.getNameFunc() 得到 方法内部的 匿名函数
+            // 而 匿名函数() 就是直接调用函数了，但是函数内部保存了 that=this，则this指向当前函数
+            console.log(object2.getNameFunc()()); // My Object
+        </script>
+    </body>
+</html>
